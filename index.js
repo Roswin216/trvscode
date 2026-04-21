@@ -1,5 +1,12 @@
 const { Client } = require('discord.js-selfbot-v13');
 const client = new Client({ checkUpdate: false });
+const http = require('http');
+
+// Tạo một server web giả để Render không báo lỗi Port
+http.createServer((req, res) => {
+  res.write("Bot is running!");
+  res.end();
+}).listen(8080);
 
 client.on('ready', async () => {
   console.log(`${client.user.username} đang giả lập VS Code!`);

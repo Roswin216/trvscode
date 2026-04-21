@@ -9,6 +9,6 @@
   "dependencies": {
     "discord.js-selfbot-v13": "^3.4.4",
     "debug": "^4.3.4",
-    "werift-rtp": "^0.18.2"
+    "werift-rtp": "*"
   }
 }

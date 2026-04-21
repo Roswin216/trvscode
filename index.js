@@ -2,7 +2,7 @@ const { Client } = require('discord.js-selfbot-v13');
 const client = new Client({ checkUpdate: false });
 const http = require('http');
 
-// Tạo một server web giả để Render không báo lỗi Port
+// Tạo một máy chủ web cơ bản để Render không báo lỗi Port
 http.createServer((req, res) => {
   res.write("Bot is running!");
   res.end();

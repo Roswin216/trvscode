@@ -2,11 +2,15 @@ const { Client } = require('discord.js-selfbot-v13');
 const client = new Client({ checkUpdate: false });
 const http = require('http');
 
-// Tạo một máy chủ web cơ bản để Render không báo lỗi Port
+// Bắt buộc lấy Port do Render tự cấp, nếu test ở máy thì dùng 3000
+const PORT = process.env.PORT || 3000;
+
 http.createServer((req, res) => {
   res.write("Bot is running!");
   res.end();
-}).listen(8080);
+}).listen(PORT, '0.0.0.0', () => {
+  console.log(`Đã mở cổng ${PORT} để Render không báo lỗi nữa!`);
+});
 
 client.on('ready', async () => {
   console.log(`${client.user.username} đang giả lập VS Code!`);

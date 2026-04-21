@@ -10,9 +10,9 @@ client.on('ready', async () => {
     state: 'Workspace: vps-rs',
     timestamps: { start: Date.now() },
     assets: {
-      large_image: '904944834241613865',
+      large_image: 'mp:external/3Y9X-0D-V0pXoUv6704C88LgYwY/https/raw.githubusercontent.com/visualstudio/brand/master/icons/vscode/vscode.png',
       large_text: 'Visual Studio Code',
-      small_image: '904944834241613865',
+      small_image: 'mp:external/3Y9X-0D-V0pXoUv6704C88LgYwY/https/raw.githubusercontent.com/visualstudio/brand/master/icons/vscode/vscode.png',
       small_text: 'VS Code'
     }
   });

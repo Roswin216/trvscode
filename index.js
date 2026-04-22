@@ -1,8 +1,8 @@
-const { Client, RichPresence } = require('discord.js-selfbot-v13');
+const { Client } = require('discord.js-selfbot-v13');
 const client = new Client({ checkUpdate: false });
 const http = require('http');
 
-// Giữ Render chạy 24/7
+// Tạo server để Render không quét lỗi Port (Tránh lỗi Failed trên Render)
 const PORT = process.env.PORT || 3000;
 http.createServer((req, res) => {
   res.write("Bot is running!");
@@ -10,22 +10,22 @@ http.createServer((req, res) => {
 }).listen(PORT, '0.0.0.0');
 
 client.on('ready', async () => {
-  console.log(`${client.user.username} đang chạy VS Code với ảnh GitHub!`);
+  console.log(`${client.user.username} đã sẵn sàng với giao diện VS Code mới!`);
 
-  const r = new RichPresence(client)
-    .setApplicationId('383226320970055681') 
-    .setType('PLAYING')
-    .setName('Visual Studio Code')
-    .setDetails('Editing server.yml')
-    .setState('Workspace: vps-rs')
-    .setStartTimestamp(Date.now())
-    // Thêm định dạng mp:external để tránh lỗi INVALID_URL
-    .setAssetsLargeImage('mp:external/abc/https/raw.githubusercontent.com/Roswin216/trvscode/main/1.png')
-    .setAssetsLargeText('Visual Studio Code')
-    .setAssetsSmallImage('mp:external/xyz/https/raw.githubusercontent.com/Roswin216/trvscode/main/2.png')
-    .setAssetsSmallText('Developer');
-
-  client.user.setActivity(r);
+  client.user.setActivity({
+    name: 'Visual Studio Code',
+    type: 'PLAYING',
+    details: 'Editing server.yml',
+    state: 'Workspace: vps-rs',
+    timestamps: { start: Date.now() },
+    assets: {
+      // Sử dụng link ảnh trực tiếp Thắng vừa gửi
+      large_image: 'https://i.ibb.co/nqQg7RkH/1.png', 
+      large_text: 'Visual Studio Code',
+      small_image: 'https://i.ibb.co/276kcP2L/2.png',
+      small_text: 'Developer'
+    }
+  });
 });
 
 client.login(process.env.TOKEN);

@@ -2,35 +2,31 @@ const { Client } = require('discord.js-selfbot-v13');
 const client = new Client({ checkUpdate: false });
 const http = require('http');
 
-// Giữ cho Render luôn Live
+// Giữ Render không bị ngắt kết nối
 const PORT = process.env.PORT || 10000;
 http.createServer((req, res) => {
-  res.write("Bot is alive!");
+  res.write("Bot is running!");
   res.end();
 }).listen(PORT);
 
 client.on('ready', async () => {
-  console.log(`${client.user.username} - Đang kích hoạt trạng thái...`);
+  console.log(`${client.user.username} đã sẵn sàng!`);
 
-  // Cách này gửi thẳng dữ liệu lên Discord, không qua bộ lọc của thư viện
-  client.user.setPresence({
-    activities: [{
-      name: 'Visual Studio Code',
-      type: 'PLAYING',
-      details: 'Editing server.yml',
-      state: 'Workspace: vps-rs',
-      timestamps: { start: Date.now() },
-      assets: {
-        // Cấu trúc mp:external là bắt buộc để hiện ảnh từ link ngoài
-        large_image: `mp:external/Xp-A/https/raw.githubusercontent.com/Roswin216/trvscode/main/1.png`,
-        large_text: 'Visual Studio Code',
-        small_image: `mp:external/Yp-B/https/raw.githubusercontent.com/Roswin216/trvscode/main/2.png`,
-        small_text: 'Developer'
-      }
-    }]
+  client.user.setActivity('Visual Studio Code', {
+    type: 'PLAYING',
+    // Đây là ID thật của ứng dụng VS Code trên Discord
+    applicationId: '383226320970055681', 
+    details: 'Editing server.yml',
+    state: 'Workspace: vps-rs',
+    timestamps: { start: Date.now() },
+    assets: {
+      // Dùng tên asset chuẩn của VS Code thay vì link URL
+      large_image: 'vscode', 
+      large_text: 'Visual Studio Code',
+      small_image: 'vscode',
+      small_text: 'Editing'
+    }
   });
-
-  console.log("Đã gửi trạng thái thành công!");
 });
 
 client.login(process.env.TOKEN);

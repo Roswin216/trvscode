@@ -16,7 +16,7 @@ client.on('ready', async () => {
     type: 'PLAYING',
     applicationId: '1496345858965241988', // ID của Thắng
     details: 'Editing list.json',
-    state: 'Workspace: vps-rs [Codespaces: genial capybara]',
+    state: 'Workspace: vps-rs [Codespaces: genial rswt]',
     timestamps: { start: Date.now() },
     assets: {
       large_image: 'to',  // Nhớ đổi tên trên Web thành "to"

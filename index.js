@@ -15,7 +15,7 @@ client.on('ready', async () => {
   client.user.setActivity('Visual Studio Code', {
     type: 'PLAYING',
     applicationId: '1496345858965241988', // ID của Thắng
-    details: 'Editing list.json',
+    details: 'Editing cexk.json',
     state: 'Workspace: vps-rs [Codespaces: genial rswt]',
     timestamps: { start: Date.now() },
     assets: {
